@@ -476,10 +476,11 @@ public class Program
             {
                 answer += 1;
             }
+        }
             Console.WriteLine(answer);
             // end
 
-            return answer;
+        return answer;
     }
     public (int, double) Task_2_11(int n)
     {
@@ -534,29 +535,28 @@ public class Program
     public double Task_2_13(double A, double B, int type)
     {
         double answer = 0;
+        double p = (A + 2 * B) / 2;
 
         // code here;
-        if (type < 0 || type > 2) return 0;
-        if (A <= 0) return 0;
-        if (B <= 0) return 0;
-        if (type == 0)
+        if ((A > 0) && (B > 0))
         {
-            answer = A * B;
+            switch (type)
+            {
+                case 0:
+                    answer = A * B;
+                    break;
+                case 1:
+                    answer = Math.PI * (B * B - A * A);
+                    break;
+                case 2:
+                    answer = Math.Sqrt(p * (p - A) * (p - B) * (p - B));
+                    break;
+            }
         }
-        else if (type == 1)
-        {
-
-            answer = Math.PI * Math.Abs(B * B - A * A);
-        }
-        else if (type == 2)
-        {
-            double h = Math.Sqrt(B * B - A * A / 4);
-            answer = A * h / 2;
-        }
-        answer = Math.Round(answer, 2);
+        answer = Math.Round(Math.Abs(answer), 2);
         // end
         Console.WriteLine(answer);
-        // end
+        
 
         return answer;
     }
